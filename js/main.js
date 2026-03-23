@@ -102,3 +102,9 @@ gsap.utils.toArray('section').forEach(section => {
     });
   }
 });
+
+window.addEventListener('load', function() {
+  if (typeof ScrollTrigger !== 'undefined') {
+    ScrollTrigger.refresh();
+  }
+});

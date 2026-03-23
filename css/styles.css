@@ -802,3 +802,7 @@ p { font-size: clamp(0.95rem, 2vw, 1.05rem); }
   .hero-ctas { flex-direction: column; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 }
+@media(max-width:767px){
+  .service-card,.testimonial-card,.stat-item,.reveal,.hero-eyebrow,.hero h1,.hero-sub,.hero-ctas{opacity:1!important;transform:none!important;}
+  .faq-item{opacity:1!important;transform:none!important;}
+}
