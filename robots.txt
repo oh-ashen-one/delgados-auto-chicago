@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://oh-ashen-one.github.io/delgados-auto-chicago/sitemap.xml
