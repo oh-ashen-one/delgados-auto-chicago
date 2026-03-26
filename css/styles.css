@@ -770,6 +770,23 @@ p { font-size: clamp(0.95rem, 2vw, 1.05rem); }
 .hours-table td { padding: 0.75rem 0; font-size: 0.9rem; }
 .hours-table td:last-child { color: var(--accent); text-align: right; }
 
+/* ============ REVEAL — progressive enhancement ============ */
+.reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.animate {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.reveal.animate.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* ============ REDUCED MOTION ============ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

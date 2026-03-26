@@ -1,5 +1,36 @@
-// === GSAP SETUP — Delgado's Auto Service ===
+// === NAV — hamburger ===
+const hamburger = document.querySelector('.hamburger');
+const navDrawer = document.querySelector('.nav-drawer');
+if (hamburger && navDrawer) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navDrawer.classList.toggle('open');
+    document.body.style.overflow = navDrawer.classList.contains('open') ? 'hidden' : '';
+  });
+
+  navDrawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navDrawer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+// === FAQ accordion ===
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(open => open.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// === GSAP — progressive enhancement ===
+if (typeof gsap !== "undefined") {
 gsap.registerPlugin(ScrollTrigger);
+document.querySelectorAll(".reveal").forEach(el => el.classList.add("animate"));
 
 function animateIfExists(selector, animProps, triggerOpts = {}) {
   const elements = document.querySelectorAll(selector);
@@ -63,35 +94,6 @@ animateIfExists('.reveal', {
   opacity: 0, y: 40, duration: 0.8, stagger: 0.15, ease: 'power3.out'
 });
 
-// === NAV — hamburger ===
-const hamburger = document.querySelector('.hamburger');
-const navDrawer = document.querySelector('.nav-drawer');
-if (hamburger && navDrawer) {
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navDrawer.classList.toggle('open');
-    document.body.style.overflow = navDrawer.classList.contains('open') ? 'hidden' : '';
-  });
-
-  navDrawer.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navDrawer.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-}
-
-// === FAQ accordion ===
-document.querySelectorAll('.faq-question').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(open => open.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
-
 // === Scroll-triggered section reveals ===
 gsap.utils.toArray('section').forEach(section => {
   const title = section.querySelector('h2, h3');
@@ -108,3 +110,4 @@ window.addEventListener('load', function() {
     ScrollTrigger.refresh();
   }
 });
+}
