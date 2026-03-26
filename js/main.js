@@ -30,7 +30,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 // === GSAP — progressive enhancement ===
 if (typeof gsap !== "undefined") {
 gsap.registerPlugin(ScrollTrigger);
-document.querySelectorAll(".reveal").forEach(el => el.classList.add("animate"));
+
 
 function animateIfExists(selector, animProps, triggerOpts = {}) {
   const elements = document.querySelectorAll(selector);
